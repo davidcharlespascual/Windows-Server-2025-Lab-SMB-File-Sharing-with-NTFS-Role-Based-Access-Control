@@ -42,8 +42,8 @@ C:\Shares
 └── Sales-shares
 ```
 
-![Shares folder on C drive](images/createdsHarefolderinDriveC.jpg)
-![Department subfolders](images/SAlesfoldershares.jpg)
+![Shares folder on C drive](createdsHarefolderinDriveC.jpg)
+![Department subfolders](SAlesfoldershares.jpg)
 
 ### Step 2: Create AD security groups
 
@@ -52,33 +52,33 @@ In Active Directory Users and Computers, created a Global security group in each
 - `HR-Share` in `_HRDepartment`
 - `Sales-shares` in `_SalesDepartment`
 
-![HR group created](images/createdHRgroup.jpg)
-![Sales group created](images/createdSalesGroup.jpg)
+![HR group created](createdHRgroup.jpg)
+![Sales group created](createdSalesGroup.jpg)
 
 ### Step 3: Add the user to the Sales group
 
 Added `ibirt` as a member of the `Sales-shares` group.
 
-![ibirt is a member of Sales-shares](images/ibirtIsOnsalesgroup.jpg)
+![ibirt is a member of Sales-shares](ibirtIsOnsalesgroup.jpg)
 
 ### Step 4: Share the folder over SMB
 
 `Sales-shares` > Properties > Sharing > Advanced Sharing > Share this folder > Permissions.
 Share permissions set to `Authenticated Users` (Full Control / Change / Read).
 
-![Share permissions](images/salesfolderSettings.jpg)
+![Share permissions](salesfolderSettings.jpg)
 
 ### Step 5: Set NTFS permissions
 
 `Sales-shares` > Properties > Security tab. Added the `EVILCORP\Sales-shares` group and allowed access.
 
-![NTFS permissions with Sales group added](images/NTFSsecuritySetingsaddedSalesGroup.jpg)
+![NTFS permissions with Sales group added](NTFSsecuritySetingsaddedSalesGroup.jpg)
 
 ### Step 6: Confirm the folder is shared
 
 Ran `net share` on the server. `Sales-shares` shows up as `C:\Shares\Sales-shares`, along with the HR and IT shares.
 
-![net share output](images/confirmingsalesFolderisshared.jpg)
+![net share output](confirmingsalesFolderisshared.jpg)
 
 ---
 
@@ -88,7 +88,7 @@ Ran `net share` on the server. `Sales-shares` shows up as `C:\Shares\Sales-share
 
 From `win11Client`, opened `\\SERVER-ARDYPC\Sales-shares`. Access worked and `salesdata.txt` is visible.
 
-![ibirt can access Sales folder](images/IBIRTCanaccessSalesFolder.jpg)
+![ibirt can access Sales folder](IBIRTCanaccessSalesFolder.jpg)
 
 ### Test 2: Can ibirt access the HR folder? ❌ No
 
@@ -96,7 +96,7 @@ Tried to open `\\SERVER-ARDYPC\HR-Shares` and got:
 
 > Windows cannot access \\SERVER-ARDYPC\HR-Shares. You do not have permission to access this folder. Contact your network administrator to request access.
 
-![ibirt denied on HR folder](images/ibirtfromsalesCantaccessHR.jpg)
+![ibirt denied on HR folder](ibirtfromsalesCantaccessHR.jpg)
 
 ---
 
